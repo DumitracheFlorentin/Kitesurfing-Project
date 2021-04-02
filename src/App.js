@@ -1,6 +1,8 @@
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
 // Import style
 import "./style/App.scss";
-import { BrowserRouter as Router, Route } from "react-router-dom";
 
 // Import components
 import LoginScreen from "./Components/LoginScreen";
@@ -10,11 +12,11 @@ const App = () => {
   return (
     <>
       <Router>
-        <Route path="/" exact>
+        <Route path="/login" exact>
           <LoginScreen />
         </Route>
 
-        <Route path="/dashboard" exact>
+        <Route path="/" exact>
           <DashboardScreen />
         </Route>
       </Router>
