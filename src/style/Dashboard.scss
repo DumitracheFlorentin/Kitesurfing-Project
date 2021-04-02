@@ -68,3 +68,74 @@
     width: 90%;
   }
 }
+
+.popoutMarker {
+  width: 20vw;
+  min-width: 300px;
+
+  .Container {
+    padding: 1rem 1.5rem;
+  }
+
+  .nameAndCountryOfSpot {
+    h3 {
+      font-size: 1.4rem;
+      font-weight: 900;
+    }
+    h5 {
+      font-size: 1rem;
+      color: rgba(128, 128, 128, 0.8);
+    }
+    margin-bottom: 1.5rem;
+  }
+
+  .spotInfo {
+    h3 {
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      font-size: 1rem;
+      color: rgba(0, 0, 0, 0.6);
+    }
+    h4 {
+      font-size: 1.2rem;
+    }
+    margin-bottom: 0.5rem;
+  }
+}
+
+.PopoutBtn {
+  .Button {
+    background: #e8b100;
+    border: 0;
+    width: 100%;
+    height: 4vh;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      font-weight: 500;
+      margin-top: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .PopoutIcon {
+      margin-right: 0.4rem;
+      font-size: 0.95rem;
+    }
+  }
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-content {
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0 !important;
+  padding: 0;
+  margin: 0;
+}
