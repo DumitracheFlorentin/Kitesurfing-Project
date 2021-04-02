@@ -1,4 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import Axios from "axios";
 
 // Import bootstrap components
@@ -6,12 +8,16 @@ import { Form, Button, Alert } from "react-bootstrap";
 
 // Import files, functions or constants
 import { POST_LOGIN_API } from "../API/Functions";
+import { specificAccount } from "../Actions/specificAccountAction";
 
 const LoginScreen = () => {
   // Hooks
+  let history = useHistory();
+  const dispatch = useDispatch();
   const UsernameRef = useRef();
   const PasswordRef = useRef();
   const [alert, setAlert] = useState(false);
+  const user = useSelector((state) => state.user.data);
 
   // Functions
   const loginAccountHandler = (e) => {
@@ -26,9 +32,11 @@ const LoginScreen = () => {
         username: UsernameRef.current.value,
         password: PasswordRef.current.value,
       })
-        .then(
-          (res) => res.data && localStorage.setItem("userID", res.data.userId)
-        )
+        .then((res) => {
+          localStorage.setItem("userID", res.data.userId);
+          dispatch(specificAccount(res.data.userId));
+          history.push("/");
+        })
         .catch((err) => console.log(err));
     }
   };
@@ -41,40 +49,50 @@ const LoginScreen = () => {
     return () => clearTimeout(timer);
   }, [alert]);
 
+  useEffect(() => {
+    if (localStorage.getItem("userID")) {
+      history.push("/");
+    }
+  }, [dispatch]);
+
   return (
-    <div className="loginScreen">
-      <h1>Kite</h1>
-      {alert && (
-        <Alert variant="warning">Please complete all the fields!</Alert>
+    <>
+      {!localStorage.getItem("userID") && (
+        <div className="loginScreen">
+          <h1>Kite</h1>
+          {alert && (
+            <Alert variant="warning">Please complete all the fields!</Alert>
+          )}
+          <Form className="loginForm">
+            <Form.Group>
+              <Form.Label>Username</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter username..."
+                ref={UsernameRef}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Enter password..."
+                ref={PasswordRef}
+              />
+            </Form.Group>
+            <Form.Group className="spaceLoginBtn">
+              <Button
+                type="submit"
+                className="loginBtn"
+                onClick={loginAccountHandler}
+              >
+                Login
+              </Button>
+            </Form.Group>
+          </Form>
+        </div>
       )}
-      <Form className="loginForm">
-        <Form.Group>
-          <Form.Label>Username</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter username..."
-            ref={UsernameRef}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Enter password..."
-            ref={PasswordRef}
-          />
-        </Form.Group>
-        <Form.Group className="spaceLoginBtn">
-          <Button
-            type="submit"
-            className="loginBtn"
-            onClick={loginAccountHandler}
-          >
-            Login
-          </Button>
-        </Form.Group>
-      </Form>
-    </div>
+    </>
   );
 };
 

@@ -1,9 +1,18 @@
+import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
+
 const DashboardScreen = () => {
-  return (
-    <>
-      <h1>hehe</h1>
-    </>
-  );
+  // Hooks
+  let history = useHistory();
+
+  // UseEffect
+  useEffect(() => {
+    if (!localStorage.getItem("userID")) {
+      history.push("/login");
+    }
+  }, []);
+
+  return <>{localStorage.getItem("userID") && <h1>hehe</h1>}</>;
 };
 
 export default DashboardScreen;
