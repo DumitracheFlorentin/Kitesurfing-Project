@@ -1,10 +1,25 @@
+import React, { useEffect } from "react";
+
 // Leaflet Setup
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
-// Import Bootstrap components
-import { Container } from "react-bootstrap";
+// Redux Tools
+import { useDispatch, useSelector } from "react-redux";
+
+// Import files, functions or constants
+import { GetSpots } from "../Actions/getSpotsAction";
+import PopupComp from "./PopupComp";
 
 const MapComp = () => {
+  // Hooks
+  const dispatch = useDispatch();
+  const spots = useSelector((state) => state.spots.data);
+
+  // UseEffect
+  useEffect(() => {
+    dispatch(GetSpots());
+  }, [dispatch]);
+
   return (
     <div className="mapContainer">
       <MapContainer
@@ -17,9 +32,16 @@ const MapComp = () => {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[51.505, -0.09]}>
-          <Popup>Test</Popup>
-        </Marker>
+        {spots &&
+          spots.map((spot) => {
+            return (
+              <Marker position={[spot.lat, spot.long]} key={spot.id}>
+                <Popup className="popoutMarker">
+                  <PopupComp spot={spot} />
+                </Popup>
+              </Marker>
+            );
+          })}
       </MapContainer>
     </div>
   );
