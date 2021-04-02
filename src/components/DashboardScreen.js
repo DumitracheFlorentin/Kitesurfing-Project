@@ -10,7 +10,7 @@ const DashboardScreen = () => {
     if (!localStorage.getItem("userID")) {
       history.push("/login");
     }
-  }, []);
+  }, [history]);
 
   return <>{localStorage.getItem("userID") && <h1>hehe</h1>}</>;
 };

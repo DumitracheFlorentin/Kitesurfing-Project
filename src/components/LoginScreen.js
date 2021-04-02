@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Axios from "axios";
 
@@ -17,7 +17,6 @@ const LoginScreen = () => {
   const UsernameRef = useRef();
   const PasswordRef = useRef();
   const [alert, setAlert] = useState(false);
-  const user = useSelector((state) => state.user.data);
 
   // Functions
   const loginAccountHandler = (e) => {
@@ -53,7 +52,7 @@ const LoginScreen = () => {
     if (localStorage.getItem("userID")) {
       history.push("/");
     }
-  }, [dispatch]);
+  }, [dispatch, history]);
 
   return (
     <>
