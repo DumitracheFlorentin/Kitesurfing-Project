@@ -1,14 +1,24 @@
 // Import style
 import "./style/App.scss";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 // Import components
-import LoginScreen from "./components/LoginScreen";
+import LoginScreen from "./Components/LoginScreen";
+import DashboardScreen from "./Components/DashboardScreen";
 
 const App = () => {
   return (
-    <div className="App">
-      <LoginScreen />
-    </div>
+    <>
+      <Router>
+        <Route path="/" exact>
+          <LoginScreen />
+        </Route>
+
+        <Route path="/dashboard" exact>
+          <DashboardScreen />
+        </Route>
+      </Router>
+    </>
   );
 };
 
