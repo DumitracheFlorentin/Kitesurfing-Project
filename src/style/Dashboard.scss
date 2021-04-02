@@ -1,0 +1,58 @@
+.NavbarContainer {
+  height: 5vh;
+  min-height: 50px;
+  .NavbarLogo {
+    h1 {
+      font-family: "Dancing Script", cursive;
+      font-size: 30px;
+    }
+  }
+
+  .NavbarMenu {
+    height: 5vh;
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .NavbarButton {
+      border-radius: 0;
+      margin-right: 1rem;
+    }
+
+    .NavbarDropdown {
+      background: transparent;
+      color: transparent;
+    }
+
+    .NavbarDropdownToggle:after {
+      display: none !important;
+    }
+
+    .NavbarDropdownToggle:focus {
+      box-shadow: none;
+    }
+
+    .NavbarIcon {
+      font-size: 2rem;
+      color: black;
+    }
+
+    .LogoutSection {
+      color: red;
+
+      .iconLogoutSection {
+        margin-right: 1rem;
+      }
+    }
+
+    .LogoutSection:hover {
+      color: red;
+    }
+
+    .LogoutSection:focus {
+      color: red;
+      background: transparent;
+    }
+  }
+}
