@@ -5,8 +5,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./style/App.scss";
 
 // Import components
-import LoginScreen from "./Components/LoginScreen";
-import DashboardScreen from "./Components/DashboardScreen";
+import LoginScreen from "./Pages/LoginScreen";
+import DashboardScreen from "./Pages/DashboardScreen";
 
 const App = () => {
   return (
