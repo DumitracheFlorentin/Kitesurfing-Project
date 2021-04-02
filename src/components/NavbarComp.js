@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 // Import bootstrap components
 import { Nav, Button, Navbar, Container, Dropdown } from "react-bootstrap";
@@ -9,6 +10,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 const NavbarComp = () => {
+  // Hooks
+  let history = useHistory();
+
+  // Functions
+  const logoutHandler = () => {
+    localStorage.removeItem("userID");
+    history.push("/login");
+  };
+
   return (
     <>
       <Navbar bg="white" variant="light">
@@ -19,7 +29,7 @@ const NavbarComp = () => {
             </Navbar.Brand>
           </LinkContainer>
 
-          <Nav className="ml-auto mr-5 NavbarMenu">
+          <Nav className="NavbarMenu">
             <Button className="NavbarButton">ADD A SPOT</Button>
             <Dropdown>
               <Dropdown.Toggle variant="0" className="NavbarDropdownToggle">
@@ -27,7 +37,10 @@ const NavbarComp = () => {
               </Dropdown.Toggle>
 
               <Dropdown.Menu alignRight>
-                <Dropdown.Item className="LogoutSection">
+                <Dropdown.Item
+                  className="LogoutSection"
+                  onClick={logoutHandler}
+                >
                   <FontAwesomeIcon
                     icon={faSignOutAlt}
                     className="iconLogoutSection"

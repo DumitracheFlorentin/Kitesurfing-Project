@@ -1,6 +1,7 @@
 .NavbarContainer {
   height: 5vh;
   min-height: 50px;
+
   .NavbarLogo {
     h1 {
       font-family: "Dancing Script", cursive;
@@ -54,5 +55,16 @@
       color: red;
       background: transparent;
     }
+  }
+}
+
+.mapContainer {
+  margin-top: -0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .map {
+    height: 700px;
+    width: 90%;
   }
 }

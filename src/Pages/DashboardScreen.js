@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 
 // Import files, functions or constants
 import NavbarComp from "../Components/NavbarComp";
+import MapComp from "../Components/MapComp";
 
 const DashboardScreen = () => {
   // Hooks
@@ -20,7 +21,7 @@ const DashboardScreen = () => {
       {localStorage.getItem("userID") && (
         <>
           <NavbarComp />
-          <h1>hehe</h1>
+          <MapComp />
         </>
       )}
     </>
