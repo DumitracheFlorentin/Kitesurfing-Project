@@ -1,141 +1,169 @@
-.NavbarContainer {
-  height: 5vh;
-  min-height: 50px;
+.DashboardContainer {
+  height: 130vh;
+  min-height: 1400px;
 
-  .NavbarLogo {
-    h1 {
-      font-family: "Dancing Script", cursive;
-      font-size: 30px;
-    }
-  }
-
-  .NavbarMenu {
+  .NavbarContainer {
     height: 5vh;
     min-height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-    .NavbarButton {
-      border-radius: 0;
-      margin-right: 1rem;
-    }
-
-    .NavbarDropdown {
-      background: transparent;
-      color: transparent;
-    }
-
-    .NavbarDropdownToggle:after {
-      display: none !important;
-    }
-
-    .NavbarDropdownToggle:focus {
-      box-shadow: none;
-    }
-
-    .NavbarIcon {
-      font-size: 2rem;
-      color: black;
-    }
-
-    .LogoutSection {
-      color: red;
-
-      .iconLogoutSection {
-        margin-right: 1rem;
+    .NavbarLogo {
+      h1 {
+        font-family: "Dancing Script", cursive;
+        font-size: 30px;
       }
     }
 
-    .LogoutSection:hover {
-      color: red;
-    }
+    .NavbarMenu {
+      height: 5vh;
+      min-height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-    .LogoutSection:focus {
-      color: red;
-      background: transparent;
+      .NavbarButton {
+        border-radius: 0;
+        margin-right: 1rem;
+      }
+
+      .NavbarDropdown {
+        background: transparent;
+        color: transparent;
+      }
+
+      .NavbarDropdownToggle:after {
+        display: none !important;
+      }
+
+      .NavbarDropdownToggle:focus {
+        box-shadow: none;
+      }
+
+      .NavbarIcon {
+        font-size: 2rem;
+        color: black;
+      }
+
+      .LogoutSection {
+        color: red;
+
+        .iconLogoutSection {
+          margin-right: 1rem;
+        }
+      }
+
+      .LogoutSection:hover {
+        color: red;
+      }
+
+      .LogoutSection:focus {
+        color: red;
+        background: transparent;
+      }
     }
   }
-}
 
-.mapContainer {
-  margin-top: -0.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  .map {
-    height: 700px;
-    width: 90%;
-  }
-}
-
-.popoutMarker {
-  width: 20vw;
-  min-width: 300px;
-
-  .Container {
-    padding: 1rem 1.5rem;
-  }
-
-  .nameAndCountryOfSpot {
-    h3 {
-      font-size: 1.4rem;
-      font-weight: 900;
-    }
-    h5 {
-      font-size: 1rem;
-      color: rgba(128, 128, 128, 0.8);
-    }
-    margin-bottom: 1.5rem;
-  }
-
-  .spotInfo {
-    h3 {
-      text-transform: uppercase;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      font-size: 1rem;
-      color: rgba(0, 0, 0, 0.6);
-    }
-    h4 {
-      font-size: 1.2rem;
-    }
-    margin-bottom: 0.5rem;
-  }
-}
-
-.PopoutBtn {
-  .Button {
-    background: #e8b100;
-    border: 0;
-    width: 100%;
-    height: 4vh;
-    color: white;
+  .mapContainer {
+    margin-top: -0.2rem;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
-
-    h1 {
-      font-size: 1rem;
-      letter-spacing: 0.5px;
-      font-weight: 500;
-      margin-top: 0.5rem;
-      text-transform: uppercase;
-    }
-
-    .PopoutIcon {
-      margin-right: 0.4rem;
-      font-size: 0.95rem;
+    justify-content: center;
+    .map {
+      height: 700px;
+      width: 90%;
     }
   }
-}
 
-.leaflet-popup-content-wrapper,
-.leaflet-popup-content {
-  -webkit-border-radius: 0 !important;
-  -moz-border-radius: 0 !important;
-  border-radius: 0 !important;
-  padding: 0;
-  margin: 0;
+  .popoutMarker {
+    width: 20vw;
+    min-width: 300px;
+
+    .Container {
+      padding: 1rem 1.5rem;
+    }
+
+    .nameAndCountryOfSpot {
+      h3 {
+        font-size: 1.4rem;
+        font-weight: 900;
+      }
+      h5 {
+        font-size: 1rem;
+        color: rgba(128, 128, 128, 0.8);
+      }
+      margin-bottom: 1.5rem;
+    }
+
+    .spotInfo {
+      h3 {
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        font-size: 1rem;
+        color: rgba(0, 0, 0, 0.6);
+      }
+      h4 {
+        font-size: 1.2rem;
+      }
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .PopoutBtn {
+    width: 20vw;
+    min-width: 300px;
+    .Button {
+      background: #e8b100;
+      border: 0;
+      width: 100%;
+      height: 4vh;
+      min-height: 40px;
+      color: white;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+      h1 {
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+        font-weight: 500;
+        margin-top: 0.5rem;
+        text-transform: uppercase;
+      }
+
+      .PopoutIcon {
+        margin-right: 0.4rem;
+        font-size: 0.95rem;
+      }
+    }
+  }
+
+  .TableContainer {
+    margin-top: 3rem;
+
+    .searchBar {
+      margin-top: -1.2rem;
+
+      .searchBarInput {
+        width: 20rem;
+        background: #f2f1f9;
+        border: none;
+        padding: 0.5rem 1rem;
+        margin: 1.5rem 0;
+        outline: 0;
+        font-family: "Font Awesome\ 5 Free", "Roboto";
+        content: "\f061";
+        font-weight: 400;
+      }
+    }
+  }
+
+  .leaflet-popup-content-wrapper,
+  .leaflet-popup-content {
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+    padding: 0;
+    margin: 0;
+  }
 }

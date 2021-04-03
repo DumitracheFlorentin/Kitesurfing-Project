@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import NavbarComp from "../Components/NavbarComp";
 import MapComp from "../Components/MapComp";
 import { specificAccount } from "../Actions/specificAccountAction";
+import TabelComp from "../Components/TabelComp";
 
 const DashboardScreen = () => {
   // Hooks
@@ -26,10 +27,11 @@ const DashboardScreen = () => {
   return (
     <>
       {localStorage.getItem("userID") && (
-        <>
+        <div className="DashboardContainer">
           <NavbarComp />
           <MapComp />
-        </>
+          <TabelComp />
+        </div>
       )}
     </>
   );

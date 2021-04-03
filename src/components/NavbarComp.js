@@ -30,7 +30,9 @@ const NavbarComp = () => {
           </LinkContainer>
 
           <Nav className="NavbarMenu">
-            <Button className="NavbarButton">ADD A SPOT</Button>
+            <LinkContainer to="/addSpot">
+              <Button className="NavbarButton">ADD A SPOT</Button>
+            </LinkContainer>
             <Dropdown>
               <Dropdown.Toggle variant="0" className="NavbarDropdownToggle">
                 <FontAwesomeIcon icon={faUserCircle} className="NavbarIcon" />
