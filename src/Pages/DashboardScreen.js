@@ -6,8 +6,8 @@ import { useDispatch } from "react-redux";
 
 // Import files, functions or constants
 import NavbarComp from "../Components/Navbar/NavbarComp";
-import MapComp from "../Components/Dashboard/MapComp";
-import TabelComp from "../Components/Dashboard/TabelComp";
+import MapComp from "../Components/DashboardPage/MapComp";
+import TabelComp from "../Components/DashboardPage/TabelComp";
 import { specificAccount } from "../Actions/specificAccountAction";
 
 const DashboardScreen = () => {

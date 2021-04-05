@@ -40,6 +40,11 @@ const FormLogin = ({ setAlert }) => {
     }
   };
 
+  const SignupPageHandler = (e) => {
+    e.preventDefault();
+    history.push("/signup");
+  };
+
   return (
     <>
       <Form className="loginForm">
@@ -66,6 +71,13 @@ const FormLogin = ({ setAlert }) => {
             onClick={loginAccountHandler}
           >
             Login
+          </Button>
+          <Button
+            type="submit"
+            className="loginButton"
+            onClick={SignupPageHandler}
+          >
+            Sign Up
           </Button>
         </Form.Group>
       </Form>

@@ -1,0 +1,22 @@
+.signupForm {
+  min-width: 300px;
+
+  .submitSignupBtn {
+    text-align: center;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+
+    .signupButton {
+      padding: 0.4rem 3rem;
+      border-radius: 0;
+      box-shadow: 0 4px 2px -2px rgba(128, 128, 128, 0.6);
+      background: #4a90e2;
+      border: none;
+    }
+
+    .signupButton:hover {
+      background: #3186e7;
+    }
+  }
+}

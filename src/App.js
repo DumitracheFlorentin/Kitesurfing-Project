@@ -7,6 +7,7 @@ import "./style/App.scss";
 // Import components, functions or constans
 import LoginScreen from "./Pages/LoginScreen";
 import DashboardScreen from "./Pages/DashboardScreen";
+import SignupScreen from "./Pages/SignupScreen";
 
 const App = () => {
   return (
@@ -18,6 +19,10 @@ const App = () => {
 
         <Route path="/" exact>
           <DashboardScreen />
+        </Route>
+
+        <Route path="/signup" exact>
+          <SignupScreen />
         </Route>
       </Router>
     </>

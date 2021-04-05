@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
 
-  .logo {
+  .Logo {
     font-family: "Dancing Script", cursive;
     text-align: center;
     margin-bottom: 2rem;
@@ -20,6 +20,8 @@
     .submitLoginBtn {
       text-align: center;
       margin-top: 2rem;
+      display: flex;
+      justify-content: space-between;
 
       .loginButton {
         padding: 0.4rem 3rem;
