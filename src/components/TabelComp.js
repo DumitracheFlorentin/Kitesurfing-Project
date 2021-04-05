@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 
-// Import Bootstrap components
+// Import Bootstrap Components
 import { Container, Table, Row, Col } from "react-bootstrap";
 
-// Redux Tools
+// Import Redux Tools
 import { useDispatch, useSelector } from "react-redux";
 
 // Import files, functions or constants
@@ -16,6 +16,7 @@ const TabelComp = () => {
   const [keyword, setKeyword] = useState("");
   let spots = useSelector((state) => state.spots.data);
 
+  // Functions
   const filterSpots = (spots, query) => {
     if (query === "") {
       return spots;

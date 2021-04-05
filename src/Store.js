@@ -4,7 +4,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 
 // Import files
-import rootReducers from "../Reducers/rootReducers";
+import rootReducers from "./Reducers/rootReducers";
 
 const middleware = [thunk];
 

@@ -1,4 +1,4 @@
-// Import Bootstrap components
+// Import Bootstrap Components
 import { Col, Row } from "react-bootstrap";
 
 // Import FontAwesomeIcons

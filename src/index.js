@@ -5,7 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 
 // REDUX Setup
 import { Provider } from "react-redux";
-import store from "./Components/Store";
+import store from "./Store";
 
 // Import React-Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";

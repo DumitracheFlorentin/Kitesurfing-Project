@@ -1,7 +1,7 @@
-// REDUX Setup
+// Import Redux Tools
 import { combineReducers } from "redux";
 
-// Import files
+// Import files, functions or constans
 import specificAccountReducer from "./specificAccountReducer";
 import getSpotsReducer from "./getSpotsReducer";
 

@@ -4,10 +4,9 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 // Import style
 import "./style/App.scss";
 
-// Import components
+// Import components, functions or constans
 import LoginScreen from "./Pages/LoginScreen";
 import DashboardScreen from "./Pages/DashboardScreen";
-import AddLocation from "./Pages/AddLocation";
 
 const App = () => {
   return (
@@ -19,9 +18,6 @@ const App = () => {
 
         <Route path="/" exact>
           <DashboardScreen />
-        </Route>
-        <Route path="/createLocation" exact>
-          <AddLocation />
         </Route>
       </Router>
     </>

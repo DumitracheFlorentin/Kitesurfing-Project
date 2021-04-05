@@ -1,9 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Axios from "axios";
 
-// Import bootstrap components
+// Import Redux Tools
+import { useDispatch } from "react-redux";
+
+// Import Bootstrap Components
 import { Form, Button, Alert } from "react-bootstrap";
 
 // Import files, functions or constants

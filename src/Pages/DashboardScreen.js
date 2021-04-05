@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-// Redux Tools
+// Import Redux Tools
 import { useDispatch } from "react-redux";
 
 // Import files, functions or constants
 import NavbarComp from "../Components/NavbarComp";
 import MapComp from "../Components/MapComp";
-import { specificAccount } from "../Actions/specificAccountAction";
 import TabelComp from "../Components/TabelComp";
+import { specificAccount } from "../Actions/specificAccountAction";
 
 const DashboardScreen = () => {
   // Hooks
