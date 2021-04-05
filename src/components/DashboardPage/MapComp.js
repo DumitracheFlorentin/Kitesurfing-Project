@@ -52,7 +52,9 @@ const MapComp = () => {
           spots.map((spot) => {
             const checkFav =
               favourites &&
-              favourites.some((each) => each.spot === parseInt(spot.id));
+              favourites.some(
+                (each) => parseInt(each.spot) === parseInt(spot.id)
+              );
 
             return (
               <Marker
