@@ -9,17 +9,20 @@ import { useDispatch, useSelector } from "react-redux";
 
 // Import files, functions or constants
 import { GetSpots } from "../../Actions/getSpotsAction";
-import { redIcon } from "./MapIcons";
+import { GetFavourites } from "../../Actions/getAllFavourites";
+import { redIcon, yellowIcon } from "./MapIcons";
 import PopupComp from "./PopupComp";
 
 const MapComp = () => {
   // Hooks
   const dispatch = useDispatch();
   const spots = useSelector((state) => state.spots.data);
+  const favourites = useSelector((state) => state.favourites.data);
 
   // UseEffect
   useEffect(() => {
     dispatch(GetSpots());
+    dispatch(GetFavourites());
   }, [dispatch]);
 
   // Delete default settings for the marker
@@ -47,14 +50,21 @@ const MapComp = () => {
 
         {spots &&
           spots.map((spot) => {
+            const checkFav =
+              favourites &&
+              favourites.some((each) => each.spot === parseInt(spot.id));
+
             return (
               <Marker
                 position={[spot.lat, spot.long]}
                 key={spot.id}
-                icon={redIcon}
+                icon={checkFav ? yellowIcon : redIcon}
               >
                 <Popup className="popoutMarker">
-                  <PopupComp spot={spot} />
+                  <PopupComp
+                    spot={spot}
+                    colorMarker={checkFav ? true : false}
+                  />
                 </Popup>
               </Marker>
             );

@@ -51,8 +51,7 @@
   .PopoutBtn {
     width: 20vw;
     min-width: 300px;
-    .Button {
-      background: #e8b100;
+    .button {
       border: 0;
       width: 100%;
       height: 4vh;
@@ -75,6 +74,14 @@
         margin-right: 0.4rem;
         font-size: 0.95rem;
       }
+    }
+
+    .redButton {
+      background: red;
+    }
+
+    .yellowButton {
+      background: #e8b100;
     }
   }
 

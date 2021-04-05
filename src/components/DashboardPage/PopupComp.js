@@ -3,9 +3,9 @@ import { Col, Row } from "react-bootstrap";
 
 // Import FontAwesomeIcons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 
-const PopupComp = ({ spot }) => {
+const PopupComp = ({ spot, colorMarker }) => {
   return (
     <>
       <div className="Container">
@@ -41,10 +41,17 @@ const PopupComp = ({ spot }) => {
         </Row>
       </div>
       <div className="PopoutBtn">
-        <button className="Button">
-          <FontAwesomeIcon icon={faPlus} className="PopoutIcon" />
-          <h1>Add to favourites</h1>
-        </button>
+        {colorMarker ? (
+          <button className="button redButton">
+            <FontAwesomeIcon icon={faMinus} className="PopoutIcon" />
+            <h1>Remove from favourites</h1>
+          </button>
+        ) : (
+          <button className="button yellowButton">
+            <FontAwesomeIcon icon={faPlus} className="PopoutIcon" />
+            <h1>Add to favourites</h1>
+          </button>
+        )}
       </div>
     </>
   );
