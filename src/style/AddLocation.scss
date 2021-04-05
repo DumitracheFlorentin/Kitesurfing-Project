@@ -1,0 +1,43 @@
+.FormContainer {
+  .Title {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+  }
+
+  .modalMap {
+    height: 300px;
+  }
+
+  .FormButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+
+    .FormButton {
+      border: 0;
+      background: transparent;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-top: 0.3rem;
+      //letter-spacing: 0.5px;
+    }
+
+    .CancelBtn {
+      margin-right: 1rem;
+      color: red;
+    }
+
+    .ConfirmBtn {
+      color: #007aff;
+    }
+  }
+}
+
+.modal-content {
+  -webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
+  border: none !important;
+}

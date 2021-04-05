@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 // Import Bootstrap Components
@@ -35,20 +35,22 @@ const NavbarComp = () => {
       <Navbar bg="white" variant="light">
         <Container className="NavbarContainer">
           <LinkContainer to="/">
-            <Navbar.Brand className="NavbarLogo">
-              <h1>Kite</h1>
+            <Navbar.Brand>
+              <h1 className="logo">Kite</h1>
             </Navbar.Brand>
           </LinkContainer>
 
           <Nav className="NavbarMenu">
-            <Button
-              className="NavbarButton"
-              onClick={() => {
-                setModalShow(true);
-              }}
-            >
-              ADD A SPOT
-            </Button>
+            {!modalShow && (
+              <Button
+                className="NavbarButton"
+                onClick={() => {
+                  setModalShow(true);
+                }}
+              >
+                ADD A SPOT
+              </Button>
+            )}
             <Dropdown>
               <Dropdown.Toggle variant="0" className="NavbarDropdownToggle">
                 <FontAwesomeIcon icon={faUserCircle} className="NavbarIcon" />
@@ -76,9 +78,6 @@ const NavbarComp = () => {
         onHide={() => setModalShow(false)}
         aria-labelledby="modalNewLocation"
       >
-        <Modal.Header closeButton>
-          <Modal.Title id="NewSpotModal">Add Spot</Modal.Title>
-        </Modal.Header>
         <Modal.Body>
           <AddLocation setModalShow={setModalShow} />
         </Modal.Body>

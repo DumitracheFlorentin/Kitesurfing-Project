@@ -7,7 +7,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { useDispatch, useSelector } from "react-redux";
 
 // Import files, functions or constants
-import { GetSpots } from "../Actions/getSpotsAction";
+import { GetSpots } from "../../Actions/getSpotsAction";
 import PopupComp from "./PopupComp";
 
 const MapComp = () => {

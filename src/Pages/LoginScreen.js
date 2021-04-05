@@ -1,46 +1,14 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import Axios from "axios";
-
-// Import Redux Tools
-import { useDispatch } from "react-redux";
-
-// Import Bootstrap Components
-import { Form, Button, Alert } from "react-bootstrap";
 
 // Import files, functions or constants
-import { POST_LOGIN_API } from "../API/Functions";
-import { specificAccount } from "../Actions/specificAccountAction";
+import FormLogin from "../Components/LoginPage/FormLogin";
+import WarningAlert from "../Components/Alerts/WarningAlert";
 
 const LoginScreen = () => {
   // Hooks
-  let history = useHistory();
-  const dispatch = useDispatch();
-  const UsernameRef = useRef();
-  const PasswordRef = useRef();
   const [alert, setAlert] = useState(false);
-
-  // Functions
-  const loginAccountHandler = (e) => {
-    // Prevent refreshing the page
-    e.preventDefault();
-
-    if (!UsernameRef.current.value || !PasswordRef.current.value) {
-      setAlert(true);
-    } else {
-      // Get userID from login form
-      Axios.post(POST_LOGIN_API(), {
-        username: UsernameRef.current.value,
-        password: PasswordRef.current.value,
-      })
-        .then((res) => {
-          localStorage.setItem("userID", res.data.userId);
-          dispatch(specificAccount(res.data.userId));
-          history.push("/");
-        })
-        .catch((err) => console.log(err));
-    }
-  };
+  const history = useHistory();
 
   // UseEffect
   useEffect(() => {
@@ -54,43 +22,15 @@ const LoginScreen = () => {
     if (localStorage.getItem("userID")) {
       history.push("/");
     }
-  }, [dispatch, history]);
+  }, [history]);
 
   return (
     <>
       {!localStorage.getItem("userID") && (
         <div className="loginScreen">
-          <h1>Kite</h1>
-          {alert && (
-            <Alert variant="warning">Please complete all the fields!</Alert>
-          )}
-          <Form className="loginForm">
-            <Form.Group>
-              <Form.Label>Username</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter username..."
-                ref={UsernameRef}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Enter password..."
-                ref={PasswordRef}
-              />
-            </Form.Group>
-            <Form.Group className="spaceLoginBtn">
-              <Button
-                type="submit"
-                className="loginBtn"
-                onClick={loginAccountHandler}
-              >
-                Login
-              </Button>
-            </Form.Group>
-          </Form>
+          <h1 className="Logo">Kite</h1>
+          {alert && <WarningAlert />}
+          <FormLogin setAlert={setAlert} />
         </div>
       )}
     </>

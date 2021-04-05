@@ -5,9 +5,9 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 // Import files, functions or constants
-import NavbarComp from "../Components/NavbarComp";
-import MapComp from "../Components/MapComp";
-import TabelComp from "../Components/TabelComp";
+import NavbarComp from "../Components/Navbar/NavbarComp";
+import MapComp from "../Components/Dashboard/MapComp";
+import TabelComp from "../Components/Dashboard/TabelComp";
 import { specificAccount } from "../Actions/specificAccountAction";
 
 const DashboardScreen = () => {

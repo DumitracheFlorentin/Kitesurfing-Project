@@ -7,7 +7,7 @@ import { Container, Table, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 
 // Import files, functions or constants
-import { GetSpots } from "../Actions/getSpotsAction";
+import { GetSpots } from "../../Actions/getSpotsAction";
 import SearchBar from "./SearchBar";
 
 const TabelComp = () => {
@@ -26,8 +26,8 @@ const TabelComp = () => {
       return (
         spot.name.toLowerCase().includes(query.toLowerCase()) ||
         spot.country.toLowerCase().includes(query.toLowerCase()) ||
-        spot.lat.toLowerCase().includes(query.toLowerCase()) ||
-        spot.long.toLowerCase().includes(query.toLowerCase()) ||
+        spot.lat.toString().toLowerCase().includes(query.toLowerCase()) ||
+        spot.long.toString().toLowerCase().includes(query.toLowerCase()) ||
         spot.month.toLowerCase().includes(query.toLowerCase()) ||
         spot.probability.toString().toLowerCase().includes(query.toLowerCase())
       );
@@ -75,7 +75,7 @@ const TabelComp = () => {
                       <td>{spot.country}</td>
                       <td>{spot.lat}</td>
                       <td>{spot.long}</td>
-                      <td>{spot.probability}</td>
+                      <td>{spot.probability}%</td>
                       <td>{spot.month}</td>
                     </tr>
                   );
