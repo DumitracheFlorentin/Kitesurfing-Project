@@ -30,7 +30,7 @@ const NavbarComp = () => {
           </LinkContainer>
 
           <Nav className="NavbarMenu">
-            <LinkContainer to="/addSpot">
+            <LinkContainer to="/createLocation">
               <Button className="NavbarButton">ADD A SPOT</Button>
             </LinkContainer>
             <Dropdown>
