@@ -7,6 +7,7 @@ import "./style/App.scss";
 // Import components
 import LoginScreen from "./Pages/LoginScreen";
 import DashboardScreen from "./Pages/DashboardScreen";
+import AddLocation from "./Pages/AddLocation";
 
 const App = () => {
   return (
@@ -18,6 +19,9 @@ const App = () => {
 
         <Route path="/" exact>
           <DashboardScreen />
+        </Route>
+        <Route path="/createLocation" exact>
+          <AddLocation />
         </Route>
       </Router>
     </>
