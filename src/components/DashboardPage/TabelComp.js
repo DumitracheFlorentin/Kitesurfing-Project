@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 
 // Import Bootstrap Components
@@ -5,6 +6,9 @@ import { Container, Table, Row, Col } from "react-bootstrap";
 
 // Import Redux Tools
 import { useDispatch, useSelector } from "react-redux";
+
+//Import FontAwesomeIcons
+import { faSort } from "@fortawesome/free-solid-svg-icons";
 
 // Import files, functions or constants
 import { GetSpots } from "../../Actions/getSpotsAction";
@@ -14,6 +18,7 @@ const TabelComp = () => {
   // Hooks
   const dispatch = useDispatch();
   const [keyword, setKeyword] = useState("");
+  const [action, setAction] = useState("");
   let spots = useSelector((state) => state.spots.data);
 
   // Functions
@@ -34,12 +39,50 @@ const TabelComp = () => {
     });
   };
 
+  const sortedTable = (spots, name) => {
+    switch (name) {
+      case "name_asc":
+        if (spots) {
+          return spots.sort((a, b) => a.name.localeCompare(b.name));
+        }
+      case "name_dsc":
+        if (spots) {
+          return spots.sort((a, b) => b.name.localeCompare(a.name));
+        }
+      default:
+        return spots;
+    }
+  };
+
+  const setActionHandler = () => {
+    if (action === "") {
+      setAction("name_asc");
+    } else if (action === "name_asc") {
+      setAction("name_dsc");
+    } else if (action === "name_dsc") {
+      setAction("name_asc");
+    }
+  };
+
+  sortedTable(spots, action);
+
   const filteredSpots = filterSpots(spots, keyword);
 
   // UseEffect
   useEffect(() => {
     dispatch(GetSpots());
   }, [dispatch]);
+
+  useEffect(() => {
+    switch (action) {
+      case "name_asc":
+        return sortedTable(spots, "name_asc");
+      case "name_dsc":
+        sortedTable(spots, "name_dsc");
+      default:
+        return spots;
+    }
+  }, [action]);
 
   return (
     <Container className="TableContainer">
@@ -54,16 +97,70 @@ const TabelComp = () => {
         </Col>
       </Row>
       <Row>
-        <Col>
-          <Table striped bordered hover>
-            <thead>
+        <Col className="tableResponsive">
+          <Table striped bordered hover responsive>
+            <thead className="TheadTable">
               <tr>
-                <th>Name</th>
-                <th>Country</th>
-                <th>Latitude</th>
-                <th>Longitude</th>
-                <th>Wind Prob.</th>
-                <th>When to go</th>
+                <th>
+                  <Row className="RowTable">
+                    <Col className="ThName">
+                      <p>Name</p>
+                    </Col>
+                    <Col className="ThButton" onClick={setActionHandler}>
+                      <FontAwesomeIcon icon={faSort} />
+                    </Col>
+                  </Row>
+                </th>
+                <th>
+                  <Row className="RowTable">
+                    <Col className="ThName">
+                      <p>Country</p>
+                    </Col>
+                    <Col className="ThButton">
+                      <FontAwesomeIcon icon={faSort} />
+                    </Col>
+                  </Row>
+                </th>
+                <th>
+                  <Row className="RowTable">
+                    <Col className="ThName">
+                      <p>Latitude</p>
+                    </Col>
+                    <Col className="ThButton">
+                      <FontAwesomeIcon icon={faSort} />
+                    </Col>
+                  </Row>
+                </th>
+                <th>
+                  <Row className="RowTable">
+                    <Col className="ThName">
+                      <p>Longitude</p>
+                    </Col>
+                    <Col className="ThButton">
+                      <FontAwesomeIcon icon={faSort} />
+                    </Col>
+                  </Row>
+                </th>
+                <th>
+                  <Row className="RowTable space">
+                    <Col className="ThName">
+                      <p>Wind Prob.</p>
+                    </Col>
+                    <Col className="ThButton">
+                      <FontAwesomeIcon icon={faSort} />
+                    </Col>
+                  </Row>
+                </th>
+                <th>
+                  <Row className="RowTable space">
+                    <Col className="ThName spaceTh">
+                      <p>Where to go</p>
+                    </Col>
+                    <Col className="ThButton">
+                      <FontAwesomeIcon icon={faSort} />
+                    </Col>
+                  </Row>
+                </th>
               </tr>
             </thead>
             <tbody>

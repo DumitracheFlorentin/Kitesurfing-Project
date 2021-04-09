@@ -5,11 +5,84 @@
   .mapContainer {
     margin-top: -0.2rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     .map {
-      height: 700px;
-      width: 90%;
+      height: 900px;
+      width: 100%;
+    }
+    .filter {
+      z-index: 1000;
+      position: absolute;
+      top: 7rem;
+      right: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: white;
+      min-height: 45px;
+      max-height: 45px;
+      min-width: 145px;
+      max-width: 145px;
+      border: 0;
+      box-shadow: 3px 3px #7c7c7c75;
+
+      .IconBoxFilter {
+        .FilterIcon {
+          min-height: 13px;
+          max-height: 13px;
+          color: black;
+        }
+        height: 5vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .TextBoxFilter {
+        .FilterText {
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          font-size: 18px;
+          margin-top: 0.6rem;
+          margin-left: 0.5rem;
+        }
+        height: 5vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    .filterPanel {
+      z-index: 1000;
+      position: absolute;
+      top: 7rem;
+      right: 2rem;
+      background: white;
+      padding: 1rem;
+      border: 0;
+      box-shadow: 3px 3px #7c7c7c75;
+
+      .ApplyFilterBtnPlace {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1.5rem;
+
+        .ApplyFilterBtn {
+          border: 1px solid rgba(131, 131, 131, 0.068);
+          background: transparent;
+          text-transform: uppercase;
+          font-weight: 700;
+          color: rgba(0, 0, 0, 0.8);
+          font-size: 16px;
+          box-shadow: 1px 2px #7c7c7c75;
+          padding: 0.5rem;
+          letter-spacing: 0.5px;
+        }
+      }
     }
   }
 
@@ -101,6 +174,35 @@
         font-family: "Font Awesome\ 5 Free", "Roboto";
         content: "\f061";
         font-weight: 400;
+      }
+    }
+
+    .spaceAround {
+      .icon {
+        cursor: pointer;
+        text-align: right;
+      }
+    }
+
+    .mustSpace {
+      min-width: auto;
+    }
+
+    .RowTable {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 200px;
+
+      .ThName {
+        margin-top: 1rem;
+        min-width: 150px;
+      }
+
+      .ThButton {
+        display: flex;
+        justify-content: flex-end;
+        cursor: pointer;
       }
     }
   }
