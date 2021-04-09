@@ -17,6 +17,7 @@ import WarningAlert from "../Alerts/WarningAlert";
 import { GetSpots } from "../../Actions/getSpotsAction";
 import { API_REQ } from "../../API/Functions";
 import { SPOT } from "../../Constants/API";
+import { redIcon } from "../DashboardPage/MapIcons";
 
 const AddLocation = ({ setModalShow }) => {
   // Hooks
@@ -45,6 +46,7 @@ const AddLocation = ({ setModalShow }) => {
         key={selectedPosition[0]}
         position={selectedPosition}
         interactive={false}
+        icon={redIcon}
       />
     ) : null;
   };

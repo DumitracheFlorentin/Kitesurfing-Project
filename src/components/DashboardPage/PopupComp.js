@@ -27,12 +27,11 @@ const PopupComp = ({ spot, colorMarker }) => {
   // Functions
   const removeFavouriteHandler = (e, id) => {
     e.preventDefault();
-    const getFavId = favourites.filter((fav) => fav.spot == id);
+    const getFavId = favourites.filter((fav) => fav.spot.toString() === id);
 
     Axios.delete(API_SPECIFIC_REQ(FAVOURITES, getFavId[0].id))
       .then(() => {
         dispatch(GetFavourites());
-        dispatch(GetSpots());
       })
       .catch((err) => {
         console.log(err);
@@ -58,7 +57,6 @@ const PopupComp = ({ spot, colorMarker }) => {
 
   // UseEffect
   useEffect(() => {
-    dispatch(GetSpots());
     dispatch(GetFavourites());
   }, [dispatch]);
 
