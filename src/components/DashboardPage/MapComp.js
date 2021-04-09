@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 
 // Leaflet Setup
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
@@ -20,13 +20,11 @@ import Filter from "../../Assets/filter.png";
 const MapComp = () => {
   // Hooks
   const dispatch = useDispatch();
-  const countryRef = useRef();
-  const windProbRef = useRef();
   const [enableFilter, setEnableFilter] = useState(false);
-  const [showData, setShowData] = useState(false);
-  const spots = useSelector((state) => state.spots.data);
+  const [filterByCountry, setFilterByCountry] = useState("");
+  const [filterByWind, setFilterByWind] = useState(0);
+  let spots = useSelector((state) => state.spots.data);
   const favourites = useSelector((state) => state.favourites.data);
-  let filteredData = spots;
 
   // Delete default settings for the marker
   delete L.Icon.Default.prototype._getIconUrl;
@@ -38,11 +36,13 @@ const MapComp = () => {
 
   // Functions
   const enableFilterHandler = (e) => {
+    setEnableFilter(true);
     e.preventDefault();
   };
 
   const applyFilterHandler = (e) => {
     e.preventDefault();
+    setEnableFilter(false);
   };
 
   // UseEffect
@@ -50,6 +50,12 @@ const MapComp = () => {
     dispatch(GetSpots());
     dispatch(GetFavourites());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (filterByWind == "") {
+      setFilterByWind(0);
+    }
+  }, [filterByWind]);
 
   return (
     <div className="mapContainer">
@@ -67,28 +73,39 @@ const MapComp = () => {
         />
 
         {spots &&
-          spots.map((spot) => {
-            const checkFav =
-              favourites &&
-              favourites.some(
-                (each) => parseInt(each.spot) === parseInt(spot.id)
-              );
+          spots
+            .filter((spot) =>
+              filterByWind === 0
+                ? spot.country
+                    .toLowerCase()
+                    .includes(filterByCountry.toLowerCase())
+                : spot.country
+                    .toLowerCase()
+                    .includes(filterByCountry.toLowerCase()) &&
+                  spot.probability === filterByWind
+            )
+            .map((spot) => {
+              const checkFav =
+                favourites &&
+                favourites.some(
+                  (each) => parseInt(each.spot) === parseInt(spot.id)
+                );
 
-            return (
-              <Marker
-                position={[spot.lat, spot.long]}
-                key={spot.id}
-                icon={checkFav ? yellowIcon : redIcon}
-              >
-                <Popup className="popoutMarker">
-                  <PopupComp
-                    spot={spot}
-                    colorMarker={checkFav ? true : false}
-                  />
-                </Popup>
-              </Marker>
-            );
-          })}
+              return (
+                <Marker
+                  position={[spot.lat, spot.long]}
+                  key={spot.id}
+                  icon={checkFav ? yellowIcon : redIcon}
+                >
+                  <Popup className="popoutMarker">
+                    <PopupComp
+                      spot={spot}
+                      colorMarker={checkFav ? true : false}
+                    />
+                  </Popup>
+                </Marker>
+              );
+            })}
       </MapContainer>
 
       {!enableFilter ? (
@@ -107,7 +124,9 @@ const MapComp = () => {
             <Form.Control
               type="text"
               placeholder="Enter country..."
-              ref={countryRef}
+              onChange={(e) => {
+                setFilterByCountry(e.target.value);
+              }}
             />
           </Form.Group>
           <Form.Group controlId="formGroupWindProb">
@@ -115,12 +134,14 @@ const MapComp = () => {
             <Form.Control
               type="number"
               placeholder="Wind prob."
-              ref={windProbRef}
+              onChange={(e) => {
+                setFilterByWind(e.target.value);
+              }}
             />
           </Form.Group>
           <Form.Group className="ApplyFilterBtnPlace">
             <button onClick={applyFilterHandler} className="ApplyFilterBtn">
-              Apply filter
+              Close filter
             </button>
           </Form.Group>
         </Form>

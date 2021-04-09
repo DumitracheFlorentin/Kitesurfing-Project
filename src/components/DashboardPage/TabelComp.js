@@ -75,11 +75,11 @@ const TabelComp = () => {
       ];
 
       if (spots && type.split("_")[1] === "asc") {
-        return spots.sort((a, b) => {
+        spots.sort((a, b) => {
           return months.indexOf(a.month) - months.indexOf(b.month);
         });
       } else if (spots && type.split("_")[1] === "dsc") {
-        return spots.sort((a, b) => {
+        spots.sort((a, b) => {
           return months.indexOf(b.month) - months.indexOf(a.month);
         });
       }
