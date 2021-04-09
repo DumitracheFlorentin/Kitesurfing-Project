@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 
 // Import Bootstrap Components
@@ -7,7 +6,8 @@ import { Container, Table, Row, Col } from "react-bootstrap";
 // Import Redux Tools
 import { useDispatch, useSelector } from "react-redux";
 
-//Import FontAwesomeIcons
+// Import FontAwesomeIcons
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSort } from "@fortawesome/free-solid-svg-icons";
 
 // Import files, functions or constants

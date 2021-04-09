@@ -18,6 +18,8 @@ import { GetSpots } from "../../Actions/getSpotsAction";
 import { API_REQ } from "../../API/Functions";
 import { SPOT } from "../../Constants/API";
 import { redIcon } from "../DashboardPage/MapIcons";
+import { FIELDS, MAP } from "../../Constants/TextAlerts";
+import { imageOverlay } from "leaflet";
 
 const AddLocation = ({ setModalShow }) => {
   // Hooks
@@ -62,12 +64,12 @@ const AddLocation = ({ setModalShow }) => {
     if (
       !nameRef.current.value ||
       !countryRef.current.value ||
-      !lat ||
-      !long ||
       !probabilityRef.current.value ||
       !monthRef.current.value
     ) {
-      setAlert(true);
+      setAlert("fields");
+    } else if (!lat || !long) {
+      setAlert("map");
     } else {
       const date = new moment().format();
       Axios.post(API_REQ(SPOT), {
@@ -101,7 +103,8 @@ const AddLocation = ({ setModalShow }) => {
 
   return (
     <>
-      {alert && <WarningAlert />}
+      {alert === "fields" && <WarningAlert type={FIELDS} />}
+      {alert === "map" && <WarningAlert type={MAP} />}
       <Form className="FormContainer">
         <Form.Group controlId="formGroupName">
           <Form.Label className="Title">Name</Form.Label>
@@ -118,7 +121,7 @@ const AddLocation = ({ setModalShow }) => {
         <Form.Group controlId="formGroupSeason">
           <Form.Label className="Title">Wind Probabiliy</Form.Label>
           <Form.Control
-            type="text"
+            type="number"
             placeholder="Enter wind probability..."
             ref={probabilityRef}
           />

@@ -1,10 +1,12 @@
 // Import Bootstrap Components
 import { Alert } from "react-bootstrap";
 
-const WarningAlert = () => {
+const WarningAlert = ({ type }) => {
+  let returnedString;
+
   return (
     <>
-      <Alert variant="warning">Please complete all the fields!</Alert>
+      <Alert variant="warning">{type}</Alert>
     </>
   );
 };

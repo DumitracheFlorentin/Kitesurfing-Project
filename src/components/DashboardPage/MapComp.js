@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-// Leaflet Setup
+// Import Leaflet Tools
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 
-// Redux Tools
+// Import Redux Tools
 import { useDispatch, useSelector } from "react-redux";
 
 // Import Bootstap Components
@@ -60,8 +60,8 @@ const MapComp = () => {
   return (
     <div className="mapContainer">
       <MapContainer
-        center={[0, 0]}
-        zoom={2}
+        center={[50, 0]}
+        zoom={3}
         minZoom={2}
         maxZoom={8}
         scrollWheelZoom={false}

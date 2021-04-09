@@ -1,6 +1,7 @@
+// Import Leaflet Tools
 import L from "leaflet";
 
-// Import imgs
+// Import imgs from assets
 import yellowMarker from "../../Assets/marker-icon-gold.png";
 import redMarker from "../../Assets/marker-icon-red.png";
 import shadowAnchor from "../../Assets/marker-shadow.png";

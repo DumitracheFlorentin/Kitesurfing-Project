@@ -4,11 +4,12 @@ import { useHistory } from "react-router-dom";
 // Import files, functions or constants
 import FormLogin from "../Components/LoginPage/FormLogin";
 import WarningAlert from "../Components/Alerts/WarningAlert";
+import { FIELDS } from "../Constants/TextAlerts";
 
 const LoginScreen = () => {
   // Hooks
   const [alert, setAlert] = useState(false);
-  const history = useHistory();
+  let history = useHistory();
 
   // UseEffect
   useEffect(() => {
@@ -29,7 +30,7 @@ const LoginScreen = () => {
       {!localStorage.getItem("userID") && (
         <div className="loginScreen">
           <h1 className="Logo">Kite</h1>
-          {alert && <WarningAlert />}
+          {alert && <WarningAlert type={FIELDS} />}
           <FormLogin setAlert={setAlert} />
         </div>
       )}

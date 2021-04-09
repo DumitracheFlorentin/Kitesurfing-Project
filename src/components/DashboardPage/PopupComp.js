@@ -10,7 +10,7 @@ import { Col, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 
-// Redux Tools
+// Import Redux Tools
 import { useDispatch, useSelector } from "react-redux";
 
 // Import files, functions or constans

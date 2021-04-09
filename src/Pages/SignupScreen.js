@@ -4,11 +4,12 @@ import { useHistory } from "react-router-dom";
 // Import files, functions and constans
 import WarningAlert from "../Components/Alerts/WarningAlert";
 import SignupForm from "../Components/SignupPage/SignupForm";
+import { FIELDS, EMAIL } from "../Constants/TextAlerts";
 
 const SignupScreen = () => {
   // Hooks
-  const history = useHistory();
-  const [warning, setWarning] = useState(false);
+  let history = useHistory();
+  const [warning, setWarning] = useState("");
 
   // UseEffect
   useEffect(() => {
@@ -29,7 +30,8 @@ const SignupScreen = () => {
       {!localStorage.getItem("userID") && (
         <div className="loginScreen">
           <h1 className="Logo">Kite</h1>
-          {warning && <WarningAlert />}
+          {warning === "fields" && <WarningAlert type={FIELDS} />}
+          {warning === "email" && <WarningAlert type={EMAIL} />}
           <SignupForm setWarning={setWarning} />
         </div>
       )}

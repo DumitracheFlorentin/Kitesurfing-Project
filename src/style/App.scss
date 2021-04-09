@@ -15,8 +15,9 @@ body {
 }
 
 // Import .scss files
-@import "./LoginPage.scss";
-@import "./DashboardPage.scss";
-@import "./AddLocation.scss";
-@import "./Navbar.scss";
-@import "./SignupPage.scss";
+@import "./LoginPage/Login.scss";
+@import "./DashboardPage/Dashboard.scss";
+@import "./DashboardPage/AddLocation.scss";
+@import "./Navbar/Navbar.scss";
+@import "./SignupPage/Signup.scss";
+@import "./Error404/Error404.scss";

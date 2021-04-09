@@ -25,10 +25,13 @@ const SignupForm = ({ setWarning }) => {
     if (
       !nameRef.current.value ||
       !emailRef.current.value ||
-      !linkRef.current.value ||
-      !emailRef.current.value.includes("@")
+      !linkRef.current.value
     ) {
-      setWarning(true);
+      setWarning("fields");
+    } else if (!emailRef.current.value.includes("@")) {
+      setWarning("email");
+    } else if (emailRef.current.value.split("@")[1].length < 4) {
+      setWarning("email");
     } else {
       const date = new moment().format();
 

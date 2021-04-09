@@ -1,0 +1,55 @@
+.errorContainer {
+  height: 100vh;
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .ErrorImage {
+    width: 50%;
+    img {
+      width: 100%;
+    }
+  }
+
+  .ErrorText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+
+    .ErrorBtn {
+      background-color: #ff4f5a;
+      border: 0;
+      padding: 1rem 2rem;
+      font-size: 18px;
+    }
+
+    .btn.btn-primary:hover {
+      background-color: #f85661e5;
+    }
+    .btn.btn-primary:active,
+    .btn.btn-primary:focus {
+      background-color: #ff4f5a !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .errorContainer {
+    .ErrorImage {
+      width: 80%;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .errorContainer {
+    .ErrorBtn {
+      padding: 1rem 2rem;
+      font-size: 15px !important;
+    }
+  }
+}
