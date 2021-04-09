@@ -39,28 +39,86 @@ const TabelComp = () => {
     });
   };
 
-  const sortedTable = (spots, name) => {
-    switch (name) {
-      case "name_asc":
-        if (spots) {
-          return spots.sort((a, b) => a.name.localeCompare(b.name));
-        }
-      case "name_dsc":
-        if (spots) {
-          return spots.sort((a, b) => b.name.localeCompare(a.name));
-        }
-      default:
-        return spots;
+  const sortedTable = (spots, type) => {
+    if (type.includes("name") || type.includes("country")) {
+      switch (type.split("_")[0]) {
+        case "name":
+          if (spots && type.split("_")[1] === "asc") {
+            return spots.sort((a, b) => a.name.localeCompare(b.name));
+          } else if (spots && type.split("_")[1] === "dsc") {
+            return spots.sort((a, b) => b.name.localeCompare(a.name));
+          }
+        case "country":
+          if (spots && type.split("_")[1] === "asc") {
+            return spots.sort((a, b) => a.country.localeCompare(b.country));
+          } else if (spots && type.split("_")[1] === "dsc") {
+            return spots.sort((a, b) => b.country.localeCompare(a.country));
+          }
+
+        default:
+          return spots;
+      }
+    } else if (type.includes("month")) {
+      var months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+
+      if (spots && type.split("_")[1] === "asc") {
+        return spots.sort((a, b) => {
+          return months.indexOf(a.month) - months.indexOf(b.month);
+        });
+      } else if (spots && type.split("_")[1] === "dsc") {
+        return spots.sort((a, b) => {
+          return months.indexOf(b.month) - months.indexOf(a.month);
+        });
+      }
+    } else {
+      switch (type.split("_")[0]) {
+        case "latitude":
+          if (spots && type.split("_")[1] === "asc") {
+            return spots.sort((a, b) => a.lat - b.lat);
+          } else if (spots && type.split("_")[1] === "dsc") {
+            return spots.sort((a, b) => b.lat - a.lat);
+          }
+        case "longitude":
+          if (spots && type.split("_")[1] === "asc") {
+            console.log("check");
+            return spots.sort((a, b) => a.long - b.long);
+          } else if (spots && type.split("_")[1] === "dsc") {
+            return spots.sort((a, b) => b.long - a.long);
+          }
+        case "wind":
+          if (spots && type.split("_")[1] === "asc") {
+            return spots.sort((a, b) => a.probability - b.probability);
+          } else if (spots && type.split("_")[1] === "dsc") {
+            return spots.sort((a, b) => b.probability - a.probability);
+          }
+        default:
+          return spots;
+      }
     }
   };
 
-  const setActionHandler = () => {
+  const setActionHandler = (type) => {
     if (action === "") {
-      setAction("name_asc");
-    } else if (action === "name_asc") {
-      setAction("name_dsc");
-    } else if (action === "name_dsc") {
-      setAction("name_asc");
+      setAction(type + "_asc");
+    } else if (action === type + "_asc") {
+      setAction(type + "_dsc");
+    } else if (action === type + "_dsc") {
+      setAction(type + "_asc");
+    } else {
+      setAction(type + "_asc");
     }
   };
 
@@ -74,14 +132,8 @@ const TabelComp = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    switch (action) {
-      case "name_asc":
-        return sortedTable(spots, "name_asc");
-      case "name_dsc":
-        sortedTable(spots, "name_dsc");
-      default:
-        return spots;
-    }
+    sortedTable(spots, action);
+    console.log(action);
   }, [action]);
 
   return (
@@ -106,7 +158,10 @@ const TabelComp = () => {
                     <Col className="ThName">
                       <p>Name</p>
                     </Col>
-                    <Col className="ThButton" onClick={setActionHandler}>
+                    <Col
+                      className="ThButton"
+                      onClick={() => setActionHandler("name")}
+                    >
                       <FontAwesomeIcon icon={faSort} />
                     </Col>
                   </Row>
@@ -116,7 +171,10 @@ const TabelComp = () => {
                     <Col className="ThName">
                       <p>Country</p>
                     </Col>
-                    <Col className="ThButton">
+                    <Col
+                      className="ThButton"
+                      onClick={() => setActionHandler("country")}
+                    >
                       <FontAwesomeIcon icon={faSort} />
                     </Col>
                   </Row>
@@ -126,7 +184,10 @@ const TabelComp = () => {
                     <Col className="ThName">
                       <p>Latitude</p>
                     </Col>
-                    <Col className="ThButton">
+                    <Col
+                      className="ThButton"
+                      onClick={() => setActionHandler("latitude")}
+                    >
                       <FontAwesomeIcon icon={faSort} />
                     </Col>
                   </Row>
@@ -136,7 +197,10 @@ const TabelComp = () => {
                     <Col className="ThName">
                       <p>Longitude</p>
                     </Col>
-                    <Col className="ThButton">
+                    <Col
+                      className="ThButton"
+                      onClick={() => setActionHandler("longitude")}
+                    >
                       <FontAwesomeIcon icon={faSort} />
                     </Col>
                   </Row>
@@ -146,7 +210,10 @@ const TabelComp = () => {
                     <Col className="ThName">
                       <p>Wind Prob.</p>
                     </Col>
-                    <Col className="ThButton">
+                    <Col
+                      className="ThButton"
+                      onClick={() => setActionHandler("wind")}
+                    >
                       <FontAwesomeIcon icon={faSort} />
                     </Col>
                   </Row>
@@ -156,7 +223,10 @@ const TabelComp = () => {
                     <Col className="ThName spaceTh">
                       <p>Where to go</p>
                     </Col>
-                    <Col className="ThButton">
+                    <Col
+                      className="ThButton"
+                      onClick={() => setActionHandler("month")}
+                    >
                       <FontAwesomeIcon icon={faSort} />
                     </Col>
                   </Row>
