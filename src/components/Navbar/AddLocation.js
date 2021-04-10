@@ -19,7 +19,6 @@ import { API_REQ } from "../../API/Functions";
 import { SPOT } from "../../Constants/API";
 import { redIcon } from "../DashboardPage/MapIcons";
 import { FIELDS, MAP } from "../../Constants/TextAlerts";
-import { imageOverlay } from "leaflet";
 
 const AddLocation = ({ setModalShow }) => {
   // Hooks

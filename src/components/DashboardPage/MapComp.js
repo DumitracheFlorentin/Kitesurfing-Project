@@ -52,7 +52,7 @@ const MapComp = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (filterByWind == "") {
+    if (filterByWind === "") {
       setFilterByWind(0);
     }
   }, [filterByWind]);

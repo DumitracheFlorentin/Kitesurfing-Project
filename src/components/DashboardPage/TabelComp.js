@@ -48,12 +48,14 @@ const TabelComp = () => {
           } else if (spots && type.split("_")[1] === "dsc") {
             return spots.sort((a, b) => b.name.localeCompare(a.name));
           }
+          break;
         case "country":
           if (spots && type.split("_")[1] === "asc") {
             return spots.sort((a, b) => a.country.localeCompare(b.country));
           } else if (spots && type.split("_")[1] === "dsc") {
             return spots.sort((a, b) => b.country.localeCompare(a.country));
           }
+          break;
 
         default:
           return spots;
@@ -91,19 +93,21 @@ const TabelComp = () => {
           } else if (spots && type.split("_")[1] === "dsc") {
             return spots.sort((a, b) => b.lat - a.lat);
           }
+          break;
         case "longitude":
           if (spots && type.split("_")[1] === "asc") {
-            console.log("check");
             return spots.sort((a, b) => a.long - b.long);
           } else if (spots && type.split("_")[1] === "dsc") {
             return spots.sort((a, b) => b.long - a.long);
           }
+          break;
         case "wind":
           if (spots && type.split("_")[1] === "asc") {
             return spots.sort((a, b) => a.probability - b.probability);
           } else if (spots && type.split("_")[1] === "dsc") {
             return spots.sort((a, b) => b.probability - a.probability);
           }
+          break;
         default:
           return spots;
       }
@@ -133,8 +137,7 @@ const TabelComp = () => {
 
   useEffect(() => {
     sortedTable(spots, action);
-    console.log(action);
-  }, [action]);
+  }, [spots, action]);
 
   return (
     <Container className="TableContainer">
